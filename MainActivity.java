@@ -1,17 +1,11 @@
 package com.example.otto.stepcounter;
 
 import android.app.Activity;
-import android.app.Service;
 import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.os.IBinder;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -19,7 +13,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
 
 
 public class MainActivity extends Activity implements SensorEventListener{
@@ -36,8 +29,8 @@ public class MainActivity extends Activity implements SensorEventListener{
         setContentView(R.layout.activity_main);
 
 
-        count = (TextView) findViewById(R.id.textView);
-        Button btn = (Button) findViewById(R.id.button);
+        count = findViewById(R.id.textView);
+        Button btn = findViewById(R.id.button);
         count.setText(String.valueOf(0));
 
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
@@ -63,7 +56,6 @@ public class MainActivity extends Activity implements SensorEventListener{
 
         }
     }
-
     @Override
     protected void onPause() {
         super.onPause();
@@ -80,7 +72,6 @@ public class MainActivity extends Activity implements SensorEventListener{
             count.setText(String.valueOf(stepsInSensor++));
         }
     }
-
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
